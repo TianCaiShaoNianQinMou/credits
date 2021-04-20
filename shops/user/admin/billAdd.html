@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>超市账单管理系统</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="./bill.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-dark">
+<!--头部-->
+<nav class="navbar navbar-light bg-dark navbar-static-top">
+    <div class="header-container mx-4 py-2">
+        <!-- <h1>超市账单管理系统</h1> -->
+        <div class="header-title">超市账单管理系统</div>
+        <div class="header-user" style="line-height: 32px;">
+            <span style="color: #fff21b"> Admin</span>
+            <span style="color: #fff;"> , 欢迎你！</span>
+            <button type="button" class="btn btn-outline-success btn-sm">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>退出
+            </button>
+        </div>
+    </div>
+</nav>
+<!--时间-->
+<section class="publicTime">
+    <span id="time">2015年1月1日 11:11  星期一</span>
+    <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+</section>
+<!--主体内容-->
+<div style="display: flex;">
+    <!-- 左侧菜单栏 -->
+    <aside class="pl-3 py-3 bg-white" style="width: 200px;">
+        <h5 class="pl-4">功能列表</h5>
+        <nav class="nav flex-column nav-menu">
+            <a class="nav-link active" href="billList.html"><i class="fa fa-book fa-fw" aria-hidden="true"></i>账单管理</a>
+            <a class="nav-link" href="userList.html"><i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>用户管理</a>
+            <a class="nav-link" href="password.html"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>密码修改</a>
+            <a class="nav-link" href="login.html"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>退出系统</a>
+        </nav>
+    </aside>
+    <!-- 右侧内容区 -->
+    <div class="content-container px-5 pt-3 pb-5">
+        <!-- 面包屑导航 -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb py-2 pl-0">
+                <li class="breadcrumb-item"><a href="billList.html">账单管理页面</a></li>
+                <li class="breadcrumb-item active" aria-current="page">订单添加页面</li>
+            </ol>
+        </nav>
+
+        <!-- 内容块 -->
+        <div class="content-card">
+            <!-- 输入框及按钮 -->
+            <form class="input-line py-3 px-2">
+                <div class="row my-2 py-2">
+                    <label for="billId" class="col-md-3 text-right mb-0">订单编码：</label>
+                    <div class="col-md-4 pl-0">
+                        <input type="text" id="billId" class="form-control input-style" placeholder="请输入订单编码" required>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span>*请输入订单编码</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="billName" class="col-md-3 text-right mb-0">商品名称：</label>
+                    <div class="col-md-4 pl-0">
+                        <input type="text" id="billName" class="form-control input-style" placeholder="请输入商品名称" required>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span >*请输入商品名称</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="billCom" class="col-md-3 text-right mb-0">商品单位：</label>
+                    <div class="col-md-4 pl-0">
+                        <input type="text" id="billCom" class="form-control input-style" placeholder="请输入商品单位" required>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span>*请输入商品单位</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="billNum" class="col-md-3 text-right mb-0">商品数量：</label>
+                    <div class="col-md-4 pl-0">
+                        <input type="text" id="billNum" class="form-control input-style" placeholder="请输入商品数量" required>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span>*请输入商品数量</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="money" class="col-md-3 text-right mb-0">总金额：</label>
+                    <div class="col-md-4 pl-0">
+                        <input type="text" id="money" class="form-control input-style" placeholder="请输入总金额" required>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span>*请输入总金额</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="supplier" class="col-md-3 text-right mb-0">供应商：</label>
+                    <div class="col-auto pl-0">
+                        <select class="form-control input-style" id="supplier">
+                            <option value="" disabled selected hidden>--请选择--</option>
+                            <option value="beijing">北京市粮油总公司</option>
+                            <option value="handan">邯郸市五得利面粉厂</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 warn-text">
+                        <span>*请选择供应商</span>
+                    </div>
+                </div>
+                <div class="row my-2 py-2">
+                    <label for="isPay" class="col-md-3 text-right mb-0">是否付款：</label>
+                    <div class="col-md-4 pl-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="zhifu" id="radio1" value="noPay" checked>
+                            <label class="form-check-label" for="radio1">未付款</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="zhifu" id="radio2" value="yesPay">
+                            <label class="form-check-label" for="radio2">已付款</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 保存和返回按钮 -->
+                <div class="row my-2 py-2">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-4 pl-0 button-container">
+                        <button type="button" class="btn btn-primary btn-style px-5" onclick="history.back(-1)">保存</button>
+                        <button type="button" class="btn btn-primary btn-style px-5" onclick="history.back(-1)">返回</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/time.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+		<style>
+			body {
+				padding-top: 50px;
+				padding-bottom: 20px;
+			}
+			
+			.body-content {
+				margin-top: 20px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+					<a href="#" class="navbar-brand">管理后台</a>
+				</div>
+
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#"><span class="glyphicon glyphicon-user"></span> 用户管理</a>
+						</li>
+						<li>
+							<a href="#"><span class="glyphicon glyphicon-lock"></span> 管理员</a>
+						</li>
+						<li>
+							<a href="#"><span class="glyphicon glyphicon-list"></span> 栏目设置</a>
+						</li>
+						<li>
+							<a href="#"><span class="glyphicon glyphicon-cog"></span> 网站设置</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">
+								<span class="glyphicon glyphicon-envelop"></span> Alexander
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="glyphicon glyphicon-log-out"></span> 退出
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container body-content">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<table id="table"></table>
+				</div>
+			</div>
+			<hr>
+			<footer class="navbar navbar-fixed-bottom text-center bg-primary">
+				<p>© AlexanderZhao </p>
+			</footer>
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="js/jquery.min3.2.1.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+	<script>
+		$.ajax({
+			//请求方式
+			type: "GET",
+			//请求的媒体类型					//请求地址
+			url: "http://localhost:8080/credits_exchange/coversion/query",
+			//数据，json字符串
+			dataType: "json",
+			//请求成功
+			success: function(result) {
+				console.log(result);
+				var coversion = [{
+						field: "conId",
+						title: "id"
+					},
+					{
+						field: "conName",
+						title: "商品名称"
+					},
+					{
+						field: "conMoney",
+						title: "需要积分"
+					},
+					{
+						field: "caozuo",
+						title: "兑换"
+					},
+
+				];
+				var data1=result.data;
+				
+				$('#table').bootstrapTable({columns:coversion,data:data1})
+			},
+			//请求失败，包含具体的错误信息
+			error: function(e) {
+				console.log(e.status);
+				console.log(e.responseText);
+			}
+		});
+
+	</script>
+
+</html>

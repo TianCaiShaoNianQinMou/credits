@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>超市账单管理系统</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="./bill.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-dark">
+<!--头部-->
+<nav class="navbar navbar-light bg-dark navbar-static-top">
+    <div class="header-container mx-4 py-2">
+        <!-- <h1>超市账单管理系统</h1> -->
+        <div class="header-title">超市账单管理系统</div>
+        <div class="header-user" style="line-height: 32px;">
+            <span style="color: #fff21b"> Admin</span>
+            <span style="color: #fff;"> , 欢迎你！</span>
+            <button type="button" class="btn btn-outline-success btn-sm">
+                <a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i>退出</a>
+            </button>
+        </div>
+    </div>
+</nav>
+<!--时间-->
+<section class="publicTime" style="background-color: #e3f2fd;">
+    <span id="time">2015年1月1日 11:11  星期一</span>
+    <a href="#">温馨提示：为了能正常浏览，请使用高版本浏览器！（IE10+）</a>
+</section>
+<!--主体内容-->
+<div style="display: flex;">
+    <!-- 左侧菜单栏 -->
+    <aside class="pl-3 py-3 bg-white" style="width: 200px;">
+        <h5 class="pl-4">功能列表</h5>
+        <nav class="nav flex-column nav-menu">
+            <a class="nav-link" href="billList.html"><i class="fa fa-book fa-fw" aria-hidden="true"></i>账单管理</a>
+            <a class="nav-link active" href="userList.html"><i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>用户管理</a>
+            <a class="nav-link" href="password.html"><i class="fa fa-lock fa-fw" aria-hidden="true"></i>密码修改</a>
+            <a class="nav-link" href="login.html"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>退出系统</a>
+        </nav>
+    </aside>
+    <!-- 右侧内容区 -->
+    <div class="content-container px-5 pt-3 pb-5">
+        <!-- 面包屑导航 -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb py-2 pl-0">
+                <!-- <li class="breadcrumb-item"><a href="#">Home</a></li> -->
+                <li class="breadcrumb-item active" aria-current="page">用户管理页面</li>
+            </ol>
+        </nav>
+
+        <!-- 内容块 -->
+        <div class="content-card">
+            <!-- 输入框及按钮 -->
+            <div class="row input-line py-3 px-1" style="align-items: center;">
+                <div class="col-auto row my-2">
+                    <label for="searchUserName" class="mb-0">用户名：</label>
+                    <div >
+                        <input type="text" id="searchUserName" class="form-control input-style" placeholder="请输入用户名">
+                    </div>
+                </div>
+                <div class="col-auto row my-2">
+                    <button type="button" class="btn btn-success btn-sm btn-style">
+                        <i class="fa fa-search mr-1" aria-hidden="true"></i>查询
+                    </button>
+                </div>
+                <div class="col-auto my-2 ml-auto">
+                    <button type="button" class="btn btn-primary btn-sm btn-style">
+                        <a href="userAdd.html" style="color: #fff;"><i class="fa fa-plus-circle mr-1" aria-hidden="true"></i>添加用户</a>
+                    </button>
+                </div>
+            </div>
+
+            <!--账单表格 样式和供应商公用-->
+            <div class="px-3 pt-2 pb-4">
+                <table class="table ">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">用户编码</th>
+                            <th scope="col">用户名称</th>
+                            <th scope="col">性别</th>
+                            <th scope="col">年龄</th>
+                            <th scope="col">电话</th>
+                            <th scope="col">用户类型</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>hanlu</td>
+                            <td>韩露</td>
+                            <td>女</td>
+                            <td>20</td>
+                            <td>15918230478</td>
+                            <td>经理</td>
+                            <td>
+                                <a href="userView.html" title="查看"><i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i></a>
+                                <a href="userUpdate.html" title="修改"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                <a href="#deleteModal" title="删除" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fa fa-times fa-fw" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>lili</td>
+                            <td>莉莉</td>
+                            <td>女</td>
+                            <td>22</td>
+                            <td>15918230479</td>
+                            <td>经理</td>
+                            <td>
+                                <a href="userView.html" title="查看"><i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i></a>
+                                <a href="userUpdate.html" title="修改"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                <a href="#deleteModal" title="删除" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fa fa-times fa-fw" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 点击删除后弹出的模态框 -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalTitle">提示</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                你确定要删除该用户吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- <section class="publicMian ">
+        <div class="left">
+            <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
+            <nav>
+                <ul class="list">
+                    <li><a href="billList.html">账单管理</a></li>
+                    <li><a href="providerList.html">供应商管理</a></li>
+                    <li  id="active"><a href="userList.html">用户管理</a></li>
+                    <li><a href="password.html">密码修改</a></li>
+                    <li><a href="login.html">退出系统</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right">
+            <div class="location">
+                <strong>你现在所在的位置是:</strong>
+                <span>用户管理页面</span>
+            </div>
+            <div class="search">
+                <span>用户名：</span>
+                <input type="text" placeholder="请输入用户名"/>
+                <input type="button" value="查询"/>
+                <a href="userAdd.html">添加用户</a>
+            </div>
+
+            <table class="providerTable" cellpadding="0" cellspacing="0">
+                <tr class="firstTr">
+                    <th width="10%">用户编码</th>
+                    <th width="20%">用户名称</th>
+                    <th width="10%">性别</th>
+                    <th width="10%">年龄</th>
+                    <th width="10%">电话</th>
+                    <th width="10%">用户类型</th>
+                    <th width="30%">操作</th>
+                </tr>
+                <tr>
+                    <td>hanlu</td>
+                    <td>韩露</td>
+                    <td>女</td>
+                    <td>20</td>
+                    <td>15918230478</td>
+                    <td>经理</td>
+                    <td>
+                        <a href="userView.html"><img src="img/read.png" alt="查看" title="查看"/></a>
+                        <a href="userUpdate.html"><img src="img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a href="#" class="removeUser"><img src="img/schu.png" alt="删除" title="删除"/></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>PRO-CODE—001</td>
+                    <td>测试供应商001</td>
+                    <td>韩露</td>
+                    <td>15918230478</td>
+                    <td>15918230478</td>
+                    <td>2015-11-12</td>
+                    <td>
+                        <a href="userView.html"><img src="img/read.png" alt="查看" title="查看"/></a>
+                        <a href="userUpdate.html"><img src="img/xiugai.png" alt="修改" title="修改"/></a>
+                        <a href="#" class="removeUser"><img src="img/schu.png" alt="删除" title="删除"/></a>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </section> -->
+
+<!--点击删除按钮后弹出的页面-->
+<!-- <div class="zhezhao"></div>
+<div class="remove" id="removeUse">
+    <div class="removerChid">
+        <h2>提示</h2>
+        <div class="removeMain">
+            <p>你确定要删除该用户吗？</p>
+            <a href="#" id="yes">确定</a>
+            <a href="#" id="no">取消</a>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+    </footer> -->
+
+<script src="js/jquery.js"></script>
+<script src="js/js.js"></script>
+<script src="js/time.js"></script>
+
+</body>
+</html>

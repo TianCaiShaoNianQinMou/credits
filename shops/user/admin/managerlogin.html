@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>系统登录 - 超市账单管理系统</title>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body class="login_bg">
+		<section class="loginBox">
+			<header class="loginHeader">
+				<h1>超市积分兑换管理系统</h1>
+			</header>
+			<section class="loginCont">
+				<form class="loginForm" action="welcome.html">
+					<div class="inputbox">
+						<label for="user">用户名：</label>
+						<input id="name" name="name" placeholder="请输入用户名" required/>
+					</div>
+					<div class="inputbox">
+						<label for="mima">密码：</label>
+						<input id="password" type="password" name="password" placeholder="请输入密码" required/>
+					</div>
+					<div class="subBtn">
+						<input type="submit" id="but" value="登录" />
+					</div>
+				</form>
+			</section>
+		</section>
+	</body>
+	<script src="../js/jquery-1.7.2.min.js"></script>
+	<script>
+		/*
+		alert("今天星期二")
+		function login() {
+			var name = $("#name");
+			var password = $("#password");
+			alert(name)
+			alert(password)
+			var but = $("#but");
+			but.click() {
+				$(function() {
+					//请求参数
+					var list = {};
+					//
+					$.ajax({
+						//请求方式
+						type: "POST",
+						//请求的媒体类型
+						contentType: "application/json;charset=UTF-8",
+						//请求地址
+						url: "http://localhost:8080/credits_exchange/admin/login",
+						//数据，json字符串
+						data: {
+							"name":name.val(),
+							"password":password.val()
+						}},
+						//请求成功
+						success: function(result) {
+							console.log(result);
+							if(result=="200"){
+								alert("登录成功")
+								window.location.href="public.html"
+							}
+						},
+						//请求失败，包含具体的错误信息
+						error: function(e) {
+							console.log(e.status);
+							console.log(e.responseText);
+						}
+					});	
+			}*/
+			login()
+			function login() {
+			var name = $("#name");
+			var password = $("#password");
+			var but = $("#but");
+			but.click(function() {
+
+				$.ajax({
+					//请求方式
+					type: "POST",
+					//请求的媒体类型					//请求地址
+					url: "http://localhost:8080/credits_exchange/admin/login",
+					//数据，json字符串
+					data: {
+						"name":name.val(),
+						"password":password.val()
+		
+					},
+					//请求成功
+					success: function(result) {
+						console.log(result);
+						alert(result.code)
+						if(result.code==200){
+							alert("登陆成功")
+							window.location.href="public.html"
+						}else{
+							alert(result.msg)
+						}
+					},
+					//请求失败，包含具体的错误信息
+					error: function(e) {
+						console.log(e.status);
+						console.log(e.responseText);
+					}
+				});
+
+			});
+
+		}
+		login()
+		
+	</script>
+
+</html>
